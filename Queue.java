@@ -1,4 +1,3 @@
-package queue;
 
 import java.util.Iterator;
 
@@ -7,6 +6,10 @@ public class Queue<Item> implements Iterable<Item> {
 	private Node<Item> last;
 	private Node<Item> aux;
 	private int currentPriorityQuantity, currentNormalQuantity;
+	public int getCurrentNormalQuantity() {
+		return currentNormalQuantity;
+	}
+
 	private int currentSize, servedNormalQuantity, servedPriorityQuantity, totalServedQuantity;
 
 	public void enqueue(Item item) {
@@ -60,7 +63,7 @@ public class Queue<Item> implements Iterable<Item> {
 
 	public Item dequeue() {
 		if (isEmpty()) {
-			return null; // ERRO!
+			throw new IllegalArgumentException("Não há pessoas para serem atendidas!");
 		} else {
 			Node<Item> node = first;
 			first = first.getNext();

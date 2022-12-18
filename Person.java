@@ -1,4 +1,3 @@
-package queue;
 
 public class Person{
 	private String name;

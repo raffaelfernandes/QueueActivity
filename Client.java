@@ -1,4 +1,4 @@
-package queue;
+package ED.QueueActivity;
 
 import javax.swing.JOptionPane;
 
@@ -35,7 +35,7 @@ public class Client {
 					p = (Person) queue.dequeue();
 					JOptionPane.showMessageDialog(null, p.getName() + "\n" + p.getAge());
 				}
-				catch (Exception e) {
+				catch (IllegalArgumentException e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
 				}
 				break;
@@ -45,8 +45,21 @@ public class Client {
 			case 4:
 				JOptionPane.showMessageDialog(null, queue.showStats());
 				break;
-			default:
+				
+			case 5:
+				if(queue.getCurrentNormalQuantity() > 0) {
+					JOptionPane.showMessageDialog(null, "Não é possivel sair da operação porque ainda há pessoas na fila!");
+					option = -1;
+					break;
+				}
 				return;
+			
+			default:
+				if(option == -1)
+					break;
+				
+				JOptionPane.showMessageDialog(null, "Opção iválida");
+				break;
 			}
 		}
 	}
